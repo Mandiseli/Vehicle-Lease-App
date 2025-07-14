@@ -1,0 +1,28 @@
+﻿@model VehicleLeaseApp.Models.Vehicle
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Vehicle Details</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>Manufacturer</dt>
+        <dd>@Model.Manufacturer</dd>
+        <dt>Model</dt>
+        <dd>@Model.Model</dd>
+        <dt>Supplier</dt>
+        <dd>@Model.Supplier?.Name</dd>
+        <dt>Branch</dt>
+        <dd>@Model.Branch?.Name</dd>
+        <dt>Client</dt>
+        <dd>@Model.Client?.Name</dd>
+        <dt>Driver</dt>
+        <dd>@Model.Driver?.FullName</dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.VehicleId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,26 @@
+﻿@model VehicleLeaseApp.Models.Driver
+
+@{
+    ViewBag.Title = "Create Driver";
+}
+
+<h2>Create Driver</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.FullName)
+            @Html.EditorFor(model => model.FullName)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.LicenseNumber)
+            @Html.EditorFor(model => model.LicenseNumber)
+        </div>
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+}
+<p>@Html.ActionLink("Back to List", "Index")</p>
+

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<VehicleLeaseApp.Models.Vehicle>
+
+@{
+    ViewBag.Title = "Vehicles";
+}
+
+<h2>Vehicle List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<!-- Vehicle Allocation Report -->
+<h4>Vehicle Allocation Report</h4>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Supplier</th>
+            <th>Branch</th>
+            <th>Client</th>
+            <th>Vehicle Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var group in Model.GroupBy(v => new
+        {
+            SupplierName = v.Supplier?.Name ?? "N/A",
+            BranchName = v.Branch?.Name ?? "N/A",
+            ClientName = v.Client?.Name ?? "N/A"
+        }))
+        {
+            <tr>
+                <td>@group.Key.SupplierName</td>
+                <td>@group.Key.BranchName</td>
+                <td>@group.Key.ClientName</td>
+                <td>@group.Count()</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+
+<!-- Full Vehicle Details Table -->
+<h4>All Vehicles</h4>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Manufacturer</th>
+            <th>Model</th>
+            <th>Supplier</th>
+            <th>Branch</th>
+            <th>Client</th>
+            <th>Driver</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Manufacturer</td>
+                <td>@item.Model</td>
+                <td>@item.Supplier?.Name ?? "N/A"</td>
+                <td>@item.Branch?.Name ?? "N/A"</td>
+                <td>@item.Client?.Name ?? "N/A"</td>
+                <td>@item.Driver?.FullName ?? "N/A"</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.VehicleId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.VehicleId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.VehicleId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

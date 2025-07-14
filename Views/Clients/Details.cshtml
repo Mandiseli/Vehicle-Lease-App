@@ -1,0 +1,20 @@
+﻿@model VehicleLeaseApp.Models.Client
+
+@{
+    ViewBag.Title = "Client Details";
+}
+
+<h2>Client Details</h2>
+
+<dl class="dl-horizontal">
+    <dt>Name</dt>
+    <dd>@Model.Name</dd>
+    <dt>Address</dt>
+    <dd>@Model.Address</dd>
+</dl>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ClientId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

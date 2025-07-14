@@ -1,0 +1,22 @@
+﻿@model VehicleLeaseApp.Models.Branch
+
+@{
+    ViewBag.Title = "Branch Details";
+}
+
+<h2>Branch Details</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>Name</dt>
+        <dd>@Model.Name</dd>
+        <dt>Location</dt>
+        <dd>@Model.Location</dd>
+    </dl>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BranchId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
